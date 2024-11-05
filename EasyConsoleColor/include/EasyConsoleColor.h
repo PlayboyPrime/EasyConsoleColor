@@ -1,4 +1,8 @@
 #pragma once
+#ifndef _WIN32
+static_assert(false, "This header is only compatible with Windows");
+#endif
+
 // Remove already included headers for better build time or to fix issues
 #include <Windows.h>
 #include <cassert>
@@ -15,7 +19,7 @@ namespace EasyConsoleColor
 		std::string_view prefix = "~";
 		std::string_view suffix = "~";
 		std::string_view seperator = ",";
-		// TODO: Add grouping (~R~(TEXT) = ~R~TEXT~RST~) to get rid of reset
+		// TODO: Add grouping EX: ~R~(TEXT) = ~R~TEXT~RST~ to get rid of reset
 
 		std::string_view FG_BLUE = "B";
 		std::string_view FG_GREEN = "G";

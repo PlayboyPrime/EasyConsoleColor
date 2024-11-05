@@ -22,7 +22,7 @@
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
     <ProjectGuid>{b04a03f0-e0f6-43e3-8e4a-9daa6fe1f879}</ProjectGuid>
-    <RootNamespace>Console_Engine</RootNamespace>
+    <RootNamespace>EasyConsoleColor</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
     <ProjectName>EasyConsoleColor</ProjectName>
   </PropertyGroup>
