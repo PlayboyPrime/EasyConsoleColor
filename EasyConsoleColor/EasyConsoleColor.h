@@ -136,9 +136,9 @@ namespace ECC
 						WORD parsed_attributes;
 						if (parse_attributes(str, &i, &parsed_attributes, &parsed_group))
 						{
+							std::lock_guard lock(m_log_mutex);
 							if (!to_log.empty())
 							{
-								std::lock_guard lock(m_log_mutex);
 								m_output << to_log;
 								flush();
 
@@ -149,7 +149,6 @@ namespace ECC
 
 							if (parsed_group.has_value())
 							{
-								std::lock_guard lock(m_log_mutex);
 								m_output << parsed_group->text;
 								flush();
 
@@ -163,11 +162,14 @@ namespace ECC
 					to_log += strptr[i];
 				}
 
-				std::lock_guard lock(m_log_mutex);
-				m_output << to_log;
+				if (!to_log.empty())
+				{
+					std::lock_guard lock(m_log_mutex);
+					m_output << to_log;
+				}
 				flush();
 
-				// set_attributes(RESET);
+				// set_attributes(RESET); // This can be used so after the logged text the color will reset to default
 			}
 		}
 
