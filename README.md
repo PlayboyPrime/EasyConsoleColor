@@ -1,7 +1,8 @@
 ## A header for C++ to easily log text to console with color.
-#### [Key Features](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#key-features-1)
-#### [How To Use](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#how-to-use-1)
-#### [Example](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#example-1)
+- [Key Features](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#key-features-1)
+- [How To Use](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#how-to-use-1)
+- [Contribute](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#contribute)
+- [Example](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#example-1)
 
 ### Key Features
 - Multithreaded
@@ -13,6 +14,9 @@
 - Create a new instance of `ECC::EasyConsoleColor` like in the example code. You can also use `std::unique_ptr` so you dont have to delete it afterwards
 - Call the `log` function of the new instance with a text you want to log. To `log with color` you have to use the `prefix` then the `colors seperated by the seperator` then the `suffix` and finally your text. Example: \~R\~Red \~G,B\~Green and Blue 
 - Delete the instance when done using it
+
+### Contribute
+If you want to contribute you can do that. I will mostlikely accept it aslong it makes sense
 
 ### Example
 ```c++
