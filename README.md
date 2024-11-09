@@ -9,10 +9,10 @@
 - Easy to use
 
 ### How To Use
-- Simply add the `EasyConsoleColor.h` file into your project and include it
+- Simply add the `EasyConsoleColor.h` header into your project and include it
 - Create a new instance of `ECC::EasyConsoleColor` like in the example code. You can also use `std::unique_ptr` so you dont have to delete it afterwards
 - Call the `log` function of the new instance with a text you want to log
-- Delete the instance if finished
+- Delete the instance when done using it
 
 ### Example
 ```c++
