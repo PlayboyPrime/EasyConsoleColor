@@ -11,7 +11,7 @@
 ### How To Use
 - Simply add the `EasyConsoleColor.h` header into your project and include it
 - Create a new instance of `ECC::EasyConsoleColor` like in the example code. You can also use `std::unique_ptr` so you dont have to delete it afterwards
-- Call the `log` function of the new instance with a text you want to log
+- Call the `log` function of the new instance with a text you want to log. To `log with color` you have to use the `prefix` then the `colors seperated by the seperator` then the `suffix` and finally your text. Example: \~R\~Red \~G,B\~Green and Blue 
 - Delete the instance when done using it
 
 ### Example
