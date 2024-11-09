@@ -1,8 +1,8 @@
 ## A header for C++ to easily log text to console with color.
-- [Key Features](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#key-features-1)
-- [How To Use](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#how-to-use-1)
+- [Key Features](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#key-features)
+- [How To Use](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#how-to-use)
 - [Contribute](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#contribute)
-- [Example](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#example-1)
+- [Example](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#example)
 
 ### Key Features
 - Multithreaded
