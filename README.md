@@ -1,9 +1,18 @@
 ## A header for C++ to easily log text to console with color.
+#### [Key Features](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#key-features)
+#### [How To Use](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#how-to-use)
+#### [Example](https://github.com/PlayboyPrime/EasyConsoleColor?tab=readme-ov-file#example)
 
 ### Key Features
 - Multithreaded
 - Customizable
 - Easy to use
+
+### How To Use
+- Simply add the `EasyConsoleColor.h` file into your project and include it
+- Create a new instance of `ECC::EasyConsoleColor` like in the example code. You can also use `std::unique_ptr` so you dont have to delete it afterwards
+- Call the `log` function of the new instance with a text you want to log
+- Delete the instance if finished
 
 ### Example
 ```c++
