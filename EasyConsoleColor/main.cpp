@@ -4,7 +4,7 @@
 
 int main()
 {
-	ECC::EasyConsoleColor ecc = { {
+	ECC::EasyConsoleColor* ecc = new ECC::EasyConsoleColor{ {
 		.thread_delay_ms = 200,
 		.create_console = false,
 
@@ -26,14 +26,15 @@ int main()
 		.RESET = "RST"
 	} };
 
-	ecc.log("~R~Red ~G~(Green Green ~B~Not Blue) Red ~B~Blue Blue ~R,G~Red and Green");
+	ecc->log("~R~Red ~G~(Green Green ~B~Not Blue) Red ~B~Blue Blue ~R,G~Red and Green");
 
-	ecc.log<false>("~B,I~Type something in console: ~G,I~");
+	ecc->log<false>("~B,I~Type something in console: ~G,I~");
 	std::string input;
-	std::getline(ecc.get_input(), input);
-	std::string escaped_input = ecc.escape_str(input);
+	std::getline(ecc->get_input(), input);
+	std::string escaped_input = ecc->escape_str(input);
 
-	ecc.log("~G,I~Your Input: ~B,I~{}", escaped_input);
-	ecc.flush_queue();
-	ecc.get_output() << "Escaped: " << escaped_input;
+	ecc->log("~G,I~Your Input: ~B,I~{}", escaped_input);
+	ecc->flush_queue();
+	ecc->get_output() << "Escaped: " << escaped_input;
+	delete ecc;
 }
