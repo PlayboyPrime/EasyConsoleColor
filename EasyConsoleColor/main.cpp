@@ -26,15 +26,17 @@ int main()
 		.RESET = "RST"
 	} };
 
-	ecc->log("~R~Red ~G~(Green Green ~B~Not Blue) Red ~B~Blue Blue ~R,G~Red and Green");
+	ecc->log("~R~Red ~G~(Green Green ~B~Not Blue) Red ~B~Blue Blue ~R,G~Red and Green ~R,BG~(Red Text, Green Background)");
 
 	ecc->log<false>("~B,I~Type something in console: ~G,I~");
 	std::string input;
 	std::getline(ecc->get_input(), input);
 	std::string escaped_input = ecc->escape_str(input);
+	std::string extracted_text = ecc->extract_text(input);
 
 	ecc->log("~G,I~Your Input: ~B,I~{}", escaped_input);
 	ecc->flush_queue();
-	ecc->get_output() << "Escaped: " << escaped_input;
+	ecc->get_output() << "Escaped: " << escaped_input << '\n';
+	ecc->get_output() << "Extracted: " << extracted_text << '\n';
 	delete ecc;
 }

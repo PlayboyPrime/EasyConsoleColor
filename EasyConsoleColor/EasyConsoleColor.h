@@ -230,6 +230,35 @@ namespace ECC
 		}
 #undef CHECK
 
+		std::string extract_text(const std::string& str)
+		{
+			const char* strptr = str.data();
+
+			std::string result;
+			result.reserve(str.size());
+			for (size_t i = 0; i < str.size(); ++i)
+			{
+				if (begins_with({ strptr + i, str.size() - i }, m_config.suppressor))
+					continue;
+
+				// Search for unsuppressed prefix (This check is useless here because its already in parse_attributes)
+				if (begins_with({ strptr + i, str.size() - i }, m_config.prefix) && !is_suppressed(str, i))
+				{
+					std::optional<ParsedGroup> parsed_group = std::nullopt;
+					if (parse_attributes(str, &i, nullptr, &parsed_group))
+					{
+						if (parsed_group.has_value())
+							result += parsed_group->text;
+						continue;
+					}
+				}
+
+				result += strptr[i];
+			}
+
+			return result;
+		}
+
 	private:
 		static bool begins_with(const std::string_view& str1, const std::string_view& str2)
 		{
@@ -309,7 +338,7 @@ namespace ECC
 
 		// Parses attributes and modifies position
 		// out_group is only set when a group was found
-		bool parse_attributes(const std::string& str, size_t* pos, WORD* out_attributes, std::optional<ParsedGroup>* out_group)
+		bool parse_attributes(const std::string& str, size_t* pos, WORD* out_attributes = nullptr, std::optional<ParsedGroup>* out_group = nullptr)
 		{
 			const char* strptr = str.data();
 
@@ -333,7 +362,8 @@ namespace ECC
 				return false;
 			}
 
-			*out_attributes = attributes_str_to_num(str.substr(suffix_start, *pos - suffix_start));
+			if (out_attributes)
+				*out_attributes = attributes_str_to_num(str.substr(suffix_start, *pos - suffix_start));
 
 			// Check if next position is group begin
 			if (begins_with({ strptr + *pos + 1, str.size() - *pos - 1 }, m_config.group_begin) && !is_suppressed(str, *pos + 1))
@@ -351,7 +381,8 @@ namespace ECC
 				if (*pos == str.size())
 				{
 					*pos = group_start - 2;
-					*out_group = std::nullopt;
+					if (out_group)
+						*out_group = std::nullopt;
 				}
 				else
 				{
@@ -359,7 +390,8 @@ namespace ECC
 					if (CONSOLE_SCREEN_BUFFER_INFO csbi; GetConsoleScreenBufferInfo(m_console, &csbi))
 						prev_attributes = csbi.wAttributes;
 
-					*out_group = { str.substr(group_start, *pos - group_start), prev_attributes };
+					if (out_group)
+						*out_group = { str.substr(group_start, *pos - group_start), prev_attributes };
 				}
 			}
 
